@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+  * {
+    @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-signal-blue focus-visible:outline-offset-2;
+  }
+}
+
+@layer components {
+  /* Terminal-style tag used for status/priority chips across the app */
+  .tag {
+    @apply inline-flex items-center gap-1.5 rounded px-2 py-0.5 font-mono text-[11px] font-medium tracking-wide;
+  }
+
+  .panel {
+    @apply rounded-xl border border-slate-line bg-card shadow-panel;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-ink text-paper hover:bg-ink-soft;
+  }
+  .btn-secondary {
+    @apply btn border border-slate-line bg-card text-ink hover:bg-paper;
+  }
+  .btn-danger {
+    @apply btn bg-signal-red text-white hover:bg-signal-red/90;
+  }
+  .btn-ghost {
+    @apply btn text-slate-text hover:bg-paper;
+  }
+
+  .input {
+    @apply w-full rounded-lg border border-slate-line bg-card px-3 py-2 text-sm text-ink placeholder:text-slate-muted focus:border-ink;
+  }
+}
