@@ -1,9 +1,7 @@
 import { axiosClient, unwrap } from "./axiosClient";
 
 export const getProjectBugsApi = (projectId, params) =>
-  axiosClient
-    .get(`/projects/${projectId}/bugs`, { params })
-    .then(unwrap);
+  axiosClient.get(`/projects/${projectId}/bugs`, { params }).then(unwrap);
 
 export const getBugSummaryApi = (projectId) =>
   axiosClient.get(`/projects/${projectId}/bugs/summary`).then(unwrap);
@@ -20,11 +18,7 @@ export const createBugApi = (projectId, payload) => {
   if (payload.assignedTo) form.append("assignedTo", payload.assignedTo);
   (payload.files || []).forEach((file) => form.append("attachments", file));
 
-  return axiosClient
-    .post(`/projects/${projectId}/bugs`, form, {
-      headers: { "Content-Type": "multipart/form-data" },
-    })
-    .then(unwrap);
+  return axiosClient.post(`/projects/${projectId}/bugs`, form).then(unwrap);
 };
 
 export const updateBugApi = (bugId, payload) =>
